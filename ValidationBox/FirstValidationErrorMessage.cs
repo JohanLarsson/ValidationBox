@@ -9,11 +9,15 @@
     using System.Xaml;
 
     [MarkupExtensionReturnType(typeof(BindingExpression))]
-    public class FirstValidationErrorMessageForExtension : MarkupExtension
+    public class FirstValidationErrorForExtension : MarkupExtension
     {
-        private static readonly PropertyPath ErrorCountPath = new PropertyPath("Validation.Errors.Count");
+        private static readonly PropertyPath ErrorCountPath = new PropertyPath("(Validation.Errors).Count");
 
-        public FirstValidationErrorMessageForExtension(string elementName)
+        public FirstValidationErrorForExtension()
+        {
+        }
+
+        public FirstValidationErrorForExtension(string elementName)
         {
             this.ElementName = elementName;
         }
@@ -23,7 +27,17 @@
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             var resolver = (IXamlNameResolver)serviceProvider.GetService(typeof(IXamlNameResolver));
+            if (resolver == null)
+            {
+                return null;
+            }
+
             var source = resolver.Resolve(this.ElementName);
+            if (source == null)
+            {
+                throw new ArgumentException("Could not reolve an element named " + this.ElementName);
+            }
+
             var binding = new Binding
             {
                 Path = ErrorCountPath,

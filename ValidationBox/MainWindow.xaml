@@ -33,7 +33,7 @@
             </TextBlock.Text>
         </TextBlock>
 
-        <TextBlock Foreground="Purple" Text="{validationBox:FirstValidationErrorMessageFor {Binding ElementName=TextBox}}" />
+        <TextBlock Foreground="Purple" Text="{validationBox:FirstValidationErrorFor ElementName=TextBox}" />
 
         <TextBlock Foreground="Blue">
             <TextBlock.Text>
