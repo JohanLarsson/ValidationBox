@@ -50,6 +50,7 @@
     </ApplicationDefinition>
     <Compile Include="FirstErrorForElementMultiValueConverter.cs" />
     <Compile Include="FirstErrorOrDefaultConverter.cs" />
+    <Compile Include="FirstValidationErrorMessage.cs" />
     <Compile Include="LessThanValidationRule.cs" />
     <Compile Include="CanParseIntValidationRule.cs" />
     <Compile Include="ViewModel.cs" />

@@ -23,7 +23,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        
+
         <TextBlock Foreground="Red">
             <TextBlock.Text>
                 <MultiBinding Converter="{x:Static validationBox:FirstErrorForElementMultiValueConverter.Default}">
@@ -33,8 +33,21 @@
             </TextBlock.Text>
         </TextBlock>
 
+        <TextBlock Foreground="Purple" Text="{validationBox:FirstValidationErrorMessageFor {Binding ElementName=TextBox}}" />
+
+        <TextBlock Foreground="Blue">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}">
+                    <Binding Converter="{x:Static validationBox:FirstErrorOrDefaultConverter.Default}"
+                             ElementName="TextBox"
+                             Path="(Validation.Errors)" />
+                    <Binding ElementName="TextBox" Path="(Validation.Errors).Count" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
         <TextBlock Foreground="Orange" Text="{Binding Path=(Validation.Errors), ElementName=TextBox, Converter={x:Static validationBox:FirstErrorOrDefaultConverter.Default}}" />
-        
+
         <TextBlock x:Name="ErrorBlock" Foreground="HotPink" />
         <Button Click="OnFetchErrorClick" Content="Fetch error" />
     </StackPanel>
