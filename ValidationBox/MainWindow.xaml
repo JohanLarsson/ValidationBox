@@ -24,5 +24,7 @@
             </TextBox.Text>
         </TextBox>
         <TextBlock Foreground="Red" Text="{Binding Path=(Validation.Errors), ElementName=TextBox, Converter={x:Static validationBox:FirstErrorOrDefaultConverter.Default}}" />
+        <TextBlock x:Name="ErrorBlock" Foreground="Red" />
+        <Button Content="Fetch error" Click="OnFetchErrorClick" />
     </StackPanel>
 </Window>
