@@ -24,6 +24,7 @@
             </TextBox.Text>
         </TextBox>
 
+        <TextBlock Text="{Binding Path=(Validation.Errors)[0].ErrorContent, ElementName=TextBox}" Foreground="DarkRed" />
         <TextBlock Foreground="Red">
             <TextBlock.Text>
                 <MultiBinding Converter="{x:Static validationBox:FirstErrorForElementMultiValueConverter.Default}">
