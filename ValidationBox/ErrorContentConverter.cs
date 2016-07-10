@@ -17,10 +17,10 @@
                 var result = validationError.ErrorContent as ValidationResult;
                 if (result != null)
                 {
-                    return result.ErrorContent.ToString();
+                    return result.ErrorContent;
                 }
 
-                return validationError.ErrorContent.ToString();
+                return validationError.ErrorContent;
             }
 
             return value;
