@@ -35,7 +35,7 @@
             var source = resolver.Resolve(this.ElementName);
             if (source == null)
             {
-                throw new ArgumentException("Could not reolve an element named " + this.ElementName);
+                throw new ArgumentException("Could not resolve an element named " + this.ElementName);
             }
 
             var binding = new Binding

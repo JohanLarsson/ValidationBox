@@ -4,7 +4,6 @@
     using System.Collections;
     using System.Globalization;
     using System.Linq;
-    using System.Windows.Controls;
     using System.Windows.Data;
 
     public class FirstErrorOrDefaultConverter : IValueConverter
@@ -20,19 +19,7 @@
                 return "";
             }
 
-            var validationError = error as ValidationError;
-            if (validationError != null)
-            {
-                var result = validationError.ErrorContent as ValidationResult;
-                if (result != null)
-                {
-                    return result;
-                }
-
-                return validationError.ErrorContent;
-            }
-
-            return error;
+            return ErrorContentConverter.Default.Convert(error, targetType, parameter, culture);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
